@@ -5,6 +5,9 @@ const socketio = require('socket.io');
 const messageFormat = require('./utils/messages');
 const {userJoin , getCurrentUser , getLeaveUser , getRoomUser} = require('./utils/users');
 
+const PORT = process.env.PORT ||3000  ;
+server.listen(PORT,() => console.log(`SERVER running on ${PORT}`));
+
 const  app = express();
 const server= http.createServer(app);
 const io = socketio(server);
@@ -53,6 +56,4 @@ io.on('connection',socket => {
     });
 });
 
-const PORT = 3000 || process.env.PORT;
 
-server.listen(PORT,() => console.log(`SERVER running on ${PORT}`));
