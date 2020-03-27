@@ -5,8 +5,6 @@ const socketio = require('socket.io');
 const messageFormat = require('./utils/messages');
 const {userJoin , getCurrentUser , getLeaveUser , getRoomUser} = require('./utils/users');
 
-const PORT = process.env.PORT ||3000  ;
-server.listen(PORT,() => console.log(`SERVER running on ${PORT}`));
 
 const  app = express();
 const server= http.createServer(app);
@@ -15,6 +13,7 @@ const admin = 'CRISIS';
 app.use(express.static(path.join(__dirname,'public')));
 
 // run when user connect
+
 
 io.on('connection',socket => {
     socket.on('joinRoom',({username , room})=>{
@@ -57,3 +56,6 @@ io.on('connection',socket => {
 });
 
 
+const PORT = process.env.PORT ||3000  ;
+
+server.listen(PORT);
